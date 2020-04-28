@@ -1,8 +1,8 @@
 # MovieDb
-INFSCI 2560 Web Technology & Standards
-Assignment 2
-Kenny Wu
-October 28th, 2019
+INFSCI 2560 Web Technology & Standards  
+Assignment 2  
+Kenny Wu  
+October 28th, 2019  
 
 A fast and responsive single page web application made with AngularJS.
 
