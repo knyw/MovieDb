@@ -1,0 +1,57 @@
+<div class="movieBox" data-ng-controller="moviePage">
+    <div class="movieInfo">
+        <div class="moviePoster">
+            <img src="{{imageBaseURL + movieInfo.poster_path}}" alt="{{movieInfo.title}}">
+            <div class="movieOverlay" data-ng-click="playTrailer()">
+                <div>
+                    <img src="source/playIcon.png">
+                </div>
+            </div>
+        </div>
+        <div class="title">
+            <h1>{{movieInfo.title}}</h1>
+            <p>{{movieInfo.release_date | date: "yyyy"}}</p>
+            <p>{{movieInfo.runtime | mmTOhhmm}}</p>
+        </div>
+        <div class="rating">
+            <div>
+                <img src="source/imdb.png" alt="imdb.png">
+                <span>{{movieInfo.vote_average}}</span>
+            </div>
+        </div>
+        <table class="production">
+            <tr>
+                <td>DIRECTED BY</td>
+                <td>{{getDirector(movieInfo.credits)}}</td>
+            </tr>
+            <tr>
+                <td>WRITTEN BY</td>
+                <td>{{getWriter(movieInfo.credits)}}</td>
+            </tr>
+            <tr>
+                <td>STUDIO</td>
+                <td>{{getStudio(movieInfo.production_companies)}}</td>
+            </tr>
+        </table>
+        <table class="status">
+            <tr>
+                <td>STATUS</td>
+                <td>{{movieInfo.status}}</td>
+            </tr>
+            <tr>
+                <td>GENRE</td>
+                <td>{{getGenre(movieInfo.genres)}}</td>
+            </tr>
+        </table>
+        <div class="overview">
+            <p>{{movieInfo.overview}}</p>
+        </div>
+    </div>
+    <div class="movieReview">
+        <div data-ng-repeat="x in reviews">
+            <h4>Reviewed by:</h4>
+            <h3>&nbsp&nbsp{{x.author}}</h3>
+            <p><q>{{x.content}}</q></p>
+        </div>
+    </div>
+</div>

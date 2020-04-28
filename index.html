@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="moviesDB">
+    <head>
+        <title>MovieDb</title>
+        <meta name="author" content="Kenny Wu">
+        <meta name="date" content="October 28, 2019">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular-route.js"></script>
+    </head>
+    <body>
+        <header>
+            <input id="searchBar" data-ng-model="$root.searchFilter" data-ng-focus="searchIcon = 'search_black'" data-ng-blur="searchIcon = 'search_white'">
+            <img id="searchIcon" data-ng-init="searchIcon = 'search_white'" src="source/{{searchIcon}}.png" alt="search_icon">
+            <h1 id="moviesDB">MovieDb</h1>
+        </header>
+        <nav id="navBar" data-ng-controller="headControl">
+            <a ng-class="{active: isActive('/')}" href="#/!">TRENDING</a>
+            <a ng-class="{active: isActive('/nowplaying')}" href="#!nowplaying">NOW PLAYING</a>
+            <a ng-class="{active: isActive('/upcoming')}" href="#!upcoming">UPCOMING</a>
+            <a ng-class="{active: isActive('/toprated')}" href="#!toprated">TOP RATED</a>
+            <div id="filter" data-ng-controller="filterOrderBy">
+                <div class="filterOrderByButtons">
+                    <div data-ng-click="showFilterBox = !showFilterBox; showOrderBox = false;">
+                        <span>Filter By: </span>
+                        <div>{{$root.filterByThisName ? $root.filterByThisName : "None"}}</div>
+                    </div>
+                    <div data-ng-click="showOrderBox = !showOrderBox; showFilterBox = false;">
+                        <span>Order By: </span>
+                        <div>{{orderByThisName}}</div>
+                    </div>
+                </div>
+                <div class="selectDropdown filterDropdown" data-ng-show="showFilterBox" data-ng-mouseleave="showFilterBox = false; showFilterByTop()">
+                    <ul data-ng-show="filterTop">
+                        <li data-ng-click="$root.filterByThisName = undefined">Show All</li>
+                        <li data-ng-repeat="(x, y) in filterBy" data-ng-click="showFilterBy(x)">{{x}}</li>
+                    </ul>
+                    <ul data-ng-show="filterYear">
+                        <li data-ng-click="$root.filterByThisName = undefined">Show All</li>
+                        <li data-ng-repeat="x in filterByYear" data-ng-click="$root.filterByThis = 'release_date'; $root.filterByThisName = x; changeFilterName(x)">{{x}}</li>
+                    </ul>
+                    <ul data-ng-show="filterDecade">
+                        <li data-ng-click="$root.filterByThisName = undefined">Show All</li>
+                        <li data-ng-repeat="x in filterByDecade" data-ng-click="$root.filterByThis = 'release_date'; $root.filterByThisName = x; changeFilterName(x)">{{x}}</li>
+                    </ul>
+                    <ul data-ng-show="filterGenre">
+                        <li data-ng-click="$root.filterByThisName = undefined">Show All</li>
+                        <li data-ng-repeat="x in filterByGenre" data-ng-click="$root.filterByThis = 'genre'; $root.filterByThisName = x; changeFilterName(x)">{{x}}</li>
+                    </ul>
+                </div>
+                <div class="selectDropdown orderDropdown" data-ng-show="showOrderBox" data-ng-mouseleave="showOrderBox = false">
+                    <ul>
+                        <li data-ng-repeat="(x, y) in orderBy" data-ng-init="x == 'Title' ? arrow = '&#9650;' :  arrow = '&#9660;'; " data-ng-click="($root.orderByThis != y && x == 'Title') ? $root.orderByThisOrder = '-' : null; ($root.orderByThis != y && x == 'Year') ? $root.orderByThisOrder = '+' : null; ($root.orderByThis != y && x == 'Release Date') ? $root.orderByThisOrder = '+' : null; ($root.orderByThis != y && x == 'Rating') ? $root.orderByThisOrder = '+' : null; $root.orderByThisOrder == '+' ? $root.orderByThisOrder = '-' : $root.orderByThisOrder = '+'; $root.orderByThisOrder == '+' ? arrow = '&#9650;' : arrow = '&#9660;'; $root.orderByThis = y; changeOrderName(x)">{{arrow}} {{x}}</li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <main data-ng-view> </main>
+
+        <div id="overlay" data-ng-controller="showTrailer" data-ng-style="{'display':sharedData.overlay}">
+            <div data-ng-click="sharedData.overlay ='none'; stopPlay()"></div>
+            <iframe id="trailerPlayer" width="80%" height="80%" frameborder="0" data-ng-src="{{trustSource(trailerUrl)}}"></iframe>
+        </div>
+
+
+        <footer>
+            <p>Subscribe:</p>
+            <p>Be the first to be notified when new movies are released!</p>
+            <form id="subscribe" class="subscribe">
+                <p>Name:  </p>
+                <input type="text" name="name" required><br>
+                <p>Email: </p> 
+                <input type="email" name="email" required><br>
+                <input type="submit">
+            </form>
+            <p>Database from The Movie Database (TMDb) https://www.themoviedb.org</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,13 @@
+<div class="gridBox" data-ng-controller="trendingMovies">
+    <div class="grid" data-ng-repeat="movie in movies | orderBy: $root.orderByThisOrder + $root.orderByThis | filter: $root.filterByThisName | filter: $root.searchFilter">
+        <img src="{{imageBaseURL + movie.poster_path}}" alt="{{movie.title}}.png">
+        <div class="gridOverlay" data-ng-click="playTrailer(movie.id)">
+            <div>
+                <img src="source/playIcon.png">
+            </div>
+        </div>
+        <a href="#!id/{{movie.id}}">{{movie.title}}</a>
+        <p>{{movie.release_date | date: "yyyy"}}</p>
+        <p>{{movie.release_date | date}}</p>
+    </div>
+</div>
