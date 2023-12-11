@@ -78,33 +78,33 @@ app.config(function ($routeProvider) {
 // Initialize trending movies with Controller
 app.controller("trendingMovies", function ($scope, $http, sharedData) {
     $scope.imageBaseURL = "https://image.tmdb.org/t/p/w500";
-    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=eb9f6b0f1db9851d0e4d906d51b74187&page=1")
+    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=05d9457a6c3f27633170949ca93ff619&page=1")
         .then(function (response) {
             $scope.movies = response.data.results;
         });
-    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=eb9f6b0f1db9851d0e4d906d51b74187&page=2")
+    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=05d9457a6c3f27633170949ca93ff619&page=2")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=eb9f6b0f1db9851d0e4d906d51b74187&page=3")
+    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=05d9457a6c3f27633170949ca93ff619&page=3")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=eb9f6b0f1db9851d0e4d906d51b74187&page=4")
+    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=05d9457a6c3f27633170949ca93ff619&page=4")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=eb9f6b0f1db9851d0e4d906d51b74187&page=5")
+    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=05d9457a6c3f27633170949ca93ff619&page=5")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=eb9f6b0f1db9851d0e4d906d51b74187&page=6")
+    $http.get("https://api.themoviedb.org/3/trending/movie/week?api_key=05d9457a6c3f27633170949ca93ff619&page=6")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
             sharedData.updateItem("currentMovieList", $scope.movies);
         });
     $scope.playTrailer = function (x) {
-        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US")
+        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US")
             .then(function (response) {
                 $scope.key = response.data.results[0].key;
                 sharedData.updateItem("overlay", "block");
@@ -116,33 +116,33 @@ app.controller("trendingMovies", function ($scope, $http, sharedData) {
 // Initialize now playing movies with Controller
 app.controller("nowPlayingMovies", function ($scope, $http, sharedData) {
     $scope.imageBaseURL = "https://image.tmdb.org/t/p/w500"
-    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=1&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=1&region=US")
         .then(function (response) {
             $scope.movies = response.data.results;
         });
-    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=2&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=2&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=3&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=3&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=4&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=4&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=5&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=5&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=6&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/now_playing?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=6&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
             sharedData.updateItem("currentMovieList", $scope.movies);
         });
     $scope.playTrailer = function (x) {
-        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US")
+        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US")
             .then(function (response) {
                 $scope.key = response.data.results[0].key;
                 sharedData.updateItem("overlay", "block");
@@ -154,33 +154,33 @@ app.controller("nowPlayingMovies", function ($scope, $http, sharedData) {
 // Initialize upcoming movies with Controller
 app.controller("upcomingMovies", function ($scope, $http, sharedData) {
     $scope.imageBaseURL = "https://image.tmdb.org/t/p/w500";
-    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=1&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=1&region=US")
         .then(function (response) {
             $scope.movies = response.data.results;
         });
-    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=2&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=2&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=3&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=3&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=4&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=4&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=5&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=5&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=6&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/upcoming?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=6&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
             sharedData.updateItem("currentMovieList", $scope.movies);
         });
     $scope.playTrailer = function (x) {
-        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US")
+        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US")
             .then(function (response) {
                 $scope.key = response.data.results[0].key;
                 sharedData.updateItem("overlay", "block");
@@ -192,33 +192,33 @@ app.controller("upcomingMovies", function ($scope, $http, sharedData) {
 // Initialize top rated movies with Controller
 app.controller("topRatedMovies", function ($scope, $http, sharedData) {
     $scope.imageBaseURL = "https://image.tmdb.org/t/p/w500"
-    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=1&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=1&region=US")
         .then(function (response) {
             $scope.movies = response.data.results;
         });
-    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=2&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=2&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=3&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=3&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=4&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=4&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=5&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=5&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
         });
-    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=6&region=US")
+    $http.get("https://api.themoviedb.org/3/movie/top_rated?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=6&region=US")
         .then(function (response) {
             $scope.movies = $scope.movies.concat(response.data.results);
             sharedData.updateItem("currentMovieList", $scope.movies);
         });
     $scope.playTrailer = function (x) {
-        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US")
+        $http.get("https://api.themoviedb.org/3/movie/" + x + "/videos?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US")
             .then(function (response) {
                 $scope.key = response.data.results[0].key;
                 sharedData.updateItem("overlay", "block");
@@ -284,7 +284,7 @@ app.controller("filterOrderBy", function ($rootScope, $scope, sharedData, myFunc
                 }
             }
             var filteredGenres = myFunctions.sortUnique(genres)
-            $http.get("https://api.themoviedb.org/3/genre/movie/list?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US")
+            $http.get("https://api.themoviedb.org/3/genre/movie/list?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US")
                 .then(function (response) {
                     $scope.genreList = response.data.genres;
                     //sharedData.updateItem("currentMovieList", $scope.movies);
@@ -313,7 +313,7 @@ app.controller("filterOrderBy", function ($rootScope, $scope, sharedData, myFunc
 app.controller("moviePage", function ($scope, $http, $routeParams, sharedData) {
     $scope.imageBaseURL = "https://image.tmdb.org/t/p/w500";
     $scope.movieId = $routeParams.movieId;
-    $http.get("https://api.themoviedb.org/3/movie/" + $scope.movieId + "?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&append_to_response=credits")
+    $http.get("https://api.themoviedb.org/3/movie/" + $scope.movieId + "?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&append_to_response=credits")
     .then(function (response) {
         $scope.movieInfo = response.data;
     });
@@ -388,14 +388,14 @@ app.controller("moviePage", function ($scope, $http, $routeParams, sharedData) {
         return genres;
     };
     $scope.playTrailer = function () {
-        $http.get("https://api.themoviedb.org/3/movie/" + $scope.movieId + "/videos?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US")
+        $http.get("https://api.themoviedb.org/3/movie/" + $scope.movieId + "/videos?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US")
             .then(function (response) {
                 $scope.key = response.data.results[0].key;
                 sharedData.updateItem("overlay", "block");
                 sharedData.updateItem("movieKey", response.data.results[0].key);
         });
     };
-    $http.get("https://api.themoviedb.org/3/movie/" + $scope.movieId + "/reviews?api_key=eb9f6b0f1db9851d0e4d906d51b74187&language=en-US&page=1")
+    $http.get("https://api.themoviedb.org/3/movie/" + $scope.movieId + "/reviews?api_key=05d9457a6c3f27633170949ca93ff619&language=en-US&page=1")
         .then(function (response) {
             $scope.reviews = response.data.results;
         });
